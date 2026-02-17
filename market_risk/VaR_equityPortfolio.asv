@@ -1,0 +1,21 @@
+ver
+clear; clc; close all;
+
+data = readtable('/Users/tejasbakre634/Desktop/MATLAB_Fin/equity_portfolio_data.csv');
+
+head(data)
+data.Date = datetime(data.Date);
+dates = data.Date;
+
+prices = [data.JPM data.AAPL data.MSFT data.SPY];
+returns = diff(log(prices));
+meanReturns = mean(returns);
+volatility = std(returns);
+corrMatrix = corr(returns);
+covMatrix = cov(returns);
+
+meanReturns;
+volatility;
+corrMatrix;
+
+
